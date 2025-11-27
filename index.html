@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> Amazon Reviews For Free</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f6f7fb; }
+    .form-container { padding:2rem; background:#fff; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    .sidebar { padding:2rem; text-align:center; }
+    .four h1 { text-align:center; padding-bottom:.7em; position:relative; }
+    .four h1 span { color:#26a10d; font-weight:300; line-height:2em; }
+    #card-div { display:none; padding:2rem; margin-top:2rem; background:#fff; border-radius:8px; text-align:center; }
+    .check-circle { border-radius:200px; height:200px; width:200px; background:#F8FAF5; margin:0 auto; display:flex; align-items:center; justify-content:center; }
+    @media (max-width:768px) { .four h1 { font-size:1.3rem; margin-top:1.5rem; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#013220;">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="./images/nnlogo.png" alt="logo" style="width:10rem;"></a>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="four mb-4">
+      <h1><em>Unlock the Secret to Organic</em> <span>Amazon Reviews</span> (For Free!)</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-12 sidebar">
+        <h4>Connect With Us</h4>
+        <a href="#"><img src="images/reviewads.jpg" alt="Ads" class="img-fluid" /></a>
+      </div>
+
+      <div class="col-lg-8 col-md-12">
+        <div id="main-div-container" class="form-container">
+          <form id="brochureForm" novalidate>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="full_name">Full Name</label>
+                <input type="text" id="full_name" name="full_name" class="form-control" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="whatsapp_country_code">Country Code</label>
+                <select id="whatsapp_country_code" name="whatsapp_country_code" class="form-control" required>
+                  <option value="+91">+91</option>
+                  <option value="+1">+1</option>
+                  <option value="+971">+971</option>
+                  <option value="+44">+44</option>
+                  <option value="+61">+61</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-9">
+                <label for="whatsapp_number">WhatsApp Number</label>
+                <input type="text" id="whatsapp_number" name="whatsapp_number" class="form-control"
+                       maxlength="16" required
+                       oninput="this.value = this.value.replace(/[^+\d]/g,'').substring(0,16);"
+                       placeholder="e.g. 9876543210" title="Whatsapp number (with or without leading +)" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="country">Country</label>
+                <select id="country" name="country" class="form-control" required>
+                  <option>India</option><option>USA</option><option>UAE</option><option>Canada</option><option>UK</option><option>Australia</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="state">State/Region/Location</label>
+                <input type="text" id="state" name="state" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Are you an Existing Amazon Seller?</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="amazon_seller" id="sellerYes" value="Yes" required>
+                  <label class="form-check-label" for="sellerYes">Yes</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="amazon_seller" id="sellerNo" value="No" required>
+                  <label class="form-check-label" for="sellerNo">No</label>
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>Are you a Brand Owner?</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="brandOwner" id="brandYes" value="Yes" onchange="brandchange()" required>
+                  <label class="form-check-label" for="brandYes">Yes</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="brandOwner" id="brandNo" value="No" onchange="brandchange()" checked required>
+                  <label class="form-check-label" for="brandNo">No</label>
+                </div>
+              </div>
+
+              <div class="form-group col-md-6" id="brand11div" style="display:none;">
+                <label for="brand11">Brand</label>
+                <input type="text" id="brand11" name="brand" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="asin">Any of your ASINs</label>
+              <input type="text" id="asin" name="asin" class="form-control" placeholder="Optional">
+            </div>
+
+            <div class="text-center">
+              <button type="button" id="submitBtn" class="btn btn-success mt-3" onclick="brochureForm()">Submit</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success card -->
+        <div id="card-div" class="card mt-4">
+          <div class="card-body">
+            <div class="check-circle mb-3"><span style="font-size:3rem;color:green;">✓</span></div>
+            <h2>Success</h2>
+            <p>Thanks for joining!</p>
+            <div class="text-center">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Firebase (modular) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    // ----- REPLACE with your Google Apps Script URL -----
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVK3JeGoLr9XNzypfqsmHHi3Vc7HRC466hMupKvVjLTBBPQwtufkR3gTNERQdQtXa2/exec";
+
+    // ----- Business Recipient WhatsApp number (E.164 without +) -----
+    // You provided 8129559669; we assume Indian country code +91 -> 918129559669
+    const WHATSAPP_RECIPIENT_E164 = "918129559669"; // do not include '+'
+
+    // ----- Firebase config (kept from your snippet; change if needed) -----
+    const firebaseConfig = {
+      apiKey: "AIzaSyAtSv0sqDhoySltWj9WMUdMAmDiNicGdcU",
+      authDomain: "howzom.firebaseapp.com",
+      projectId: "howzom",
+      storageBucket: "howzom.appspot.com",
+      messagingSenderId: "977159341402",
+      appId: "1:977159341402:web:35122691e897f304945f63",
+      measurementId: "G-NXK8QKMY92"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    try { getAnalytics(app); } catch (e) { /* analytics may fail on some hosts */ }
+    const db = getFirestore(app);
+
+    // Helper: show element by id
+    const show = id => document.getElementById(id).style.display = 'block';
+    const hide = id => document.getElementById(id).style.display = 'none';
+
+    // Main form handler
+    window.brochureForm = async function () {
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+
+      // Collect values
+      const fullName = (document.getElementById('full_name').value || "").trim();
+      const email = (document.getElementById('email').value || "").trim();
+      const whatsappCountryCode = (document.getElementById('whatsapp_country_code').value || "").trim();
+      const whatsappNumber = (document.getElementById('whatsapp_number').value || "").trim();
+      const country = (document.getElementById('country').value || "").trim();
+      const state = (document.getElementById('state').value || "").trim();
+      const amazonSellerEl = document.querySelector('input[name="amazon_seller"]:checked');
+      const brandOwnerEl = document.querySelector('input[name="brandOwner"]:checked');
+      const asin = (document.getElementById('asin').value || "").trim();
+      const brand = (brandOwnerEl && brandOwnerEl.value === 'Yes') ? (document.getElementById('brand11').value || "").trim() : "None";
+
+      // Basic validation
+      if (!fullName) { alert("Please enter Full Name."); document.getElementById('full_name').focus(); submitBtn.disabled=false; return; }
+      if (!email) { alert("Please enter Email."); document.getElementById('email').focus(); submitBtn.disabled=false; return; }
+      if (!whatsappCountryCode) { alert("Please select Country Code."); document.getElementById('whatsapp_country_code').focus(); submitBtn.disabled=false; return; }
+      if (!whatsappNumber) { alert("Please enter WhatsApp Number."); document.getElementById('whatsapp_number').focus(); submitBtn.disabled=false; return; }
+      if (!country) { alert("Please select Country."); document.getElementById('country').focus(); submitBtn.disabled=false; return; }
+      if (!state) { alert("Please enter State/Region."); document.getElementById('state').focus(); submitBtn.disabled=false; return; }
+      if (!amazonSellerEl) { alert("Please answer 'Are you an Existing Amazon Seller?'"); submitBtn.disabled=false; return; }
+      if (!brandOwnerEl) { alert("Please answer 'Are you a Brand Owner?'"); submitBtn.disabled=false; return; }
+      if (brandOwnerEl.value === 'Yes' && !brand) { alert("Please enter Brand name."); document.getElementById('brand11').focus(); submitBtn.disabled=false; return; }
+
+      const amazonSeller = amazonSellerEl.value;
+      const brandOwner = brandOwnerEl.value;
+
+      // Prepare payload
+      const payload = {
+        fullName, email, whatsappCountryCode, whatsappNumber, country, state,
+        amazonSeller, brandOwner, brand, asin, createdAt: serverTimestamp ? serverTimestamp() : new Date().toISOString()
+      };
+
+      try {
+        // 1) Save to Firestore
+        await addDoc(collection(db, 'users'), payload);
+
+        // 2) Save to Google Sheet (Apps Script)
+        if (GOOGLE_SCRIPT_URL) {
+          try {
+            await fetch(GOOGLE_SCRIPT_URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+          } catch (gsErr) {
+            console.warn("Google Sheet save failed:", gsErr);
+            // continue — we already saved to Firestore
+          }
+        } else {
+          console.warn("Google Sheet URL not set. Replace GOOGLE_SCRIPT_URL with your Apps Script URL to enable sheet saving.");
+        }
+
+        // 3) Show success card
+        document.getElementById('brochureForm').reset();
+        hide('main-div-container');
+        show('card-div');
+
+        // 4) Redirect to WhatsApp (Option B: include user's name)
+        // Compose message including user's name
+        const message = `Hi, my name is ${fullName}. I have joined the Free reviews.`;
+        const encoded = encodeURIComponent(message);
+        // Open WhatsApp chat to your business number (recipient)
+        const waUrl = `https://wa.me/${WHATSAPP_RECIPIENT_E164}?text=${encoded}`;
+
+        // Open in new tab after a short pause so user sees success card
+        setTimeout(() => {
+          window.open(waUrl, '_blank');
+        }, 900);
+
+      } catch (err) {
+        console.error("Submit error:", err);
+        alert("There was an error submitting the form. Please try again.");
+      } finally {
+        submitBtn.disabled = false;
+      }
+    };
+
+    // Brand toggle
+    window.brandchange = function () {
+      const sel = document.querySelector('input[name="brandOwner"]:checked');
+      if (sel && sel.value === 'Yes') {
+        document.getElementById('brand11div').style.display = 'block';
+        document.getElementById('brand11').required = true;
+      } else {
+        document.getElementById('brand11div').style.display = 'none';
+        document.getElementById('brand11').required = false;
+      }
+    };
+
+  </script>
+
+  <!-- Optional: small inline script to ensure brand toggle initial state -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.querySelector('input[name="brandOwner"]:checked').value === 'Yes') {
+        document.getElementById('brand11div').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
